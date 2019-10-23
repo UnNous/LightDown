@@ -40,8 +40,8 @@
     {
       "run_at": "document_start", // 代码注入的时间，可选值： "document_start", "document_end", "document_idle"，默认document_idle
       "matches": ["<all_urls>"], // "<all_urls>" 表示匹配所有地址
-      "js": ["js/jquery.js","content.js","js/modifyBg.js"],
-      "css": ["content.css"]
+      "js": ["js/jquery.js","content.js","js/modifyBg.js"]
+      // "css": ["content.css"]
     }
   ],
   // 权限申请
