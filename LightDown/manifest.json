@@ -1,0 +1,60 @@
+{
+  // (必须) 清单文件的版本，这个必须是2
+  "manifest_version": 2,
+
+  // (必须) 插件的名称
+  "name": "__MSG_pluginName__",
+
+  // (必须) 插件的版本
+  "version": "1.0.0",
+
+  // 插件描述
+  "description": "__MSG_pluginDesc__",
+
+  // 默认语言
+  "default_locale": "zh_CN",
+
+  // 作者
+  "author": "Tommy",
+
+  // 图标
+  "icons": {
+    "128": "icons/on.png"
+  },
+
+  // 会一直常驻的后台JS或后台页面
+  // "background": {
+  //   "scripts": ["background.js"],
+  //   "persistent": true
+  // },
+
+  // 浏览器右上角图标设置，browser_action、page_action、app必须三选一
+  "browser_action": {
+      "default_icon": "icons/on.png",
+      // 图标悬停时的标题，可选
+      // "default_title": "这是一个示例Chrome插件",
+      "default_popup": "popup/popup.html"
+  },
+  // 需要直接注入页面的JS
+  "content_scripts": [
+    {
+      "run_at": "document_start", // 代码注入的时间，可选值： "document_start", "document_end", "document_idle"，默认document_idle
+      "matches": ["<all_urls>"], // "<all_urls>" 表示匹配所有地址
+      "js": ["js/jquery.js","content.js","js/modifyBg.js"],
+      "css": ["content.css"]
+    }
+  ],
+  // 权限申请
+  "permissions": [
+    "tabs",
+    "activeTabs",
+    "storage", // 插件本地存储
+    "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+    "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+  ],
+
+  "optional_permissions": ["<all_urls>"],
+
+  // 普通页面能够直接访问的插件资源列表，如果不设置是无法直接访问的
+  "web_accessible_resources": ["*.png","js/modifyBg.js"]
+}
